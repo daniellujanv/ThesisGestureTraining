@@ -142,6 +142,7 @@ public class GestureTrainingHandler {
 
 	public void determineNextGesture(){
 		int next = (int) Math.floor(Math.random()*4.0);
+//		int next = 0;
 		switch (next) {
 		case 0: // pointSelect
 			gestureToMake = sStatePointSelect;
@@ -472,12 +473,11 @@ public class GestureTrainingHandler {
 			Point detectedPoint = Gestures.detectPointSelectGesture(lDefects, centroid, true);
 			if(detectedPoint != null){
 				Core.circle(mRgb, getLastPointedLocation(), 5, Tools.white, -1);
-				//				if(guiHandler.onClick(getLastPointedLocation()) == true){
-				//					//					changeOfState = true;
-				//				}
+				if(guiHandler.onClick(getLastPointedLocation()) == true){
+					determineNextGesture();
+				}
 				currentState = sStateInit;
 				timeLastDetectedGesture = System.currentTimeMillis() - 1000;
-				determineNextGesture();
 				return;
 			}			
 			Core.circle(mRgb, getLastPointedLocation(), 5, Tools.magenta, -1);

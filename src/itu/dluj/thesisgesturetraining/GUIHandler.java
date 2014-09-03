@@ -466,22 +466,21 @@ public class GUIHandler {
 	 */
 	public void drawPatientsToSelect(){
 		//		Mat rec = Mat.zeros(size, type);
-		//Patient One
+		
+		/************** Patient One ************************/
+//		if(currentHover == hoverPatient1){
+//			Core.rectangle(mRgb, patientOneCoords[2], patientOneCoords[3], Tools.green, -1);
+//		}else{
+//			Core.rectangle(mRgb, patientOneCoords[2], patientOneCoords[3], Tools.blue, -1);
+//		}
+//		Core.rectangle(mRgb, patientOneCoords[0], patientOneCoords[1], Tools.lightGray, 1);
+//		mRgb = writeToImage(mRgb, patientOneCoords[4], "Patient: Tom", 0.7);
+//		Log.i("GUIHandler", " profPicRoi::"+profilePicRoi[0].size().toString()
+//				+ " profPicSize::"+ mProfilePics[0].size().toString()
+//				);
+//		Core.addWeighted(mRgb.submat(profilePicRoi[0]), 0.0, mProfilePics[0], 1.0, 0, mRgb.submat(profilePicRoi[0]));
 
-		if(currentHover == hoverPatient1){
-			Core.rectangle(mRgb, patientOneCoords[2], patientOneCoords[3], Tools.green, -1);
-		}else{
-			Core.rectangle(mRgb, patientOneCoords[2], patientOneCoords[3], Tools.blue, -1);
-		}
-		Core.rectangle(mRgb, patientOneCoords[0], patientOneCoords[1], Tools.lightGray, 1);
-		mRgb = writeToImage(mRgb, patientOneCoords[4], "Patient: Tom", 0.7);
-		Log.i("GUIHandler", " profPicRoi::"+profilePicRoi[0].size().toString()
-				+ " profPicSize::"+ mProfilePics[0].size().toString()
-				);
-		Core.addWeighted(mRgb.submat(profilePicRoi[0]), 0.0, mProfilePics[0], 1.0, 0, mRgb.submat(profilePicRoi[0]));
-
-		//Patient Two
-
+		/************************* Patient Two ***********************/
 		if(currentHover == hoverPatient2){
 			Core.rectangle(mRgb, patientTwoCoords[2], patientTwoCoords[3], Tools.green, -1);
 		}else{
@@ -489,9 +488,9 @@ public class GUIHandler {
 		}
 		Core.rectangle(mRgb, patientTwoCoords[0], patientTwoCoords[1], Tools.lightGray, 1);
 		mRgb = writeToImage(mRgb, patientTwoCoords[4], "Patient: Paul", 0.7);
-		Log.i("GUIHandler", " profPicRoi2::"+profilePicRoi[1].size().toString()
-				+ " profPicSize::"+ mProfilePics[1].size().toString()
-				);
+//		Log.i("GUIHandler", " profPicRoi2::"+profilePicRoi[1].size().toString()
+//				+ " profPicSize::"+ mProfilePics[1].size().toString()
+//				);
 		Core.addWeighted(mRgb.submat(profilePicRoi[1]), 0.0, mProfilePics[1], 1.0, 0, mRgb.submat(profilePicRoi[1]));
 	}
 
@@ -501,21 +500,21 @@ public class GUIHandler {
 	 */
 	public void drawPatientInfo(){
 		//		Mat rec = Mat.zeros(size, type);
-		drawImagesButton();
-		drawBackButton(false);
-		if(!imagesBtnClicked){
-			Core.rectangle(mRgb, patientInfoCoords[0], patientInfoCoords[1], Tools.lightGray, -1);
-			mRgb = writeToImage(mRgb, patientInfoCoords[2], sCurrentPatient +"'s Info");
-
-			Point temp = patientInfoCoords[2].clone();
-			for(int i = 0; i<patientInfoText.length; i++){
-				temp.y = temp.y + screenHeight*0.09;
-				//			Log.i("GUIHandler","Point "+i+"::"+temp.toString());
-				mRgb = writeToImage(mRgb, temp, patientInfoText[i], 0.55);
-			}
-		}else{
-			drawPatientImages();
-		}
+//		drawImagesButton();
+//		drawBackButton(false);
+//		if(!imagesBtnClicked){
+//			Core.rectangle(mRgb, patientInfoCoords[0], patientInfoCoords[1], Tools.lightGray, -1);
+//			mRgb = writeToImage(mRgb, patientInfoCoords[2], sCurrentPatient +"'s Info");
+//
+//			Point temp = patientInfoCoords[2].clone();
+//			for(int i = 0; i<patientInfoText.length; i++){
+//				temp.y = temp.y + screenHeight*0.09;
+//				//			Log.i("GUIHandler","Point "+i+"::"+temp.toString());
+//				mRgb = writeToImage(mRgb, temp, patientInfoText[i], 0.55);
+//			}
+//		}else{
+		drawPatientImages();
+//		}
 	}
 
 	/*
@@ -564,7 +563,7 @@ public class GUIHandler {
 	public void drawFullScreenImage(){
 		//		Mat rec = Mat.zeros(size, type);
 		//Doc One
-		drawBackButton(true);
+//		drawBackButton(true);
 		//patInfoCoords[5] upper left point for image
 		//patInfoCoords[1] lower righ point for image (same as both squares)
 
@@ -640,17 +639,17 @@ public class GUIHandler {
 		}
 		Core.rectangle(mRgb, fullScreenImgCoords[0], fullScreenImgCoords[1], Tools.lightGray, 2);
 
-		Point pZoomLevel = new Point();
-		pZoomLevel.x = fullScreenImgCoords[0].x*1.05;
-		pZoomLevel.y = screenHeight*0.05;
-		for(int i = 0; i<= maxZoom; i++){
-			if(i == zoomLevel){
-				Core.circle(mRgb, pZoomLevel, (2*i + 2), Tools.white, -1);
-			}else{
-				Core.circle(mRgb, pZoomLevel, (2*i + 2), Tools.white, 1);				
-			}
-			pZoomLevel.x = pZoomLevel.x * 1.10;
-		}
+//		Point pZoomLevel = new Point();
+//		pZoomLevel.x = fullScreenImgCoords[0].x*1.05;
+//		pZoomLevel.y = screenHeight*0.05;
+//		for(int i = 0; i<= maxZoom; i++){
+//			if(i == zoomLevel){
+//				Core.circle(mRgb, pZoomLevel, (2*i + 2), Tools.white, -1);
+//			}else{
+//				Core.circle(mRgb, pZoomLevel, (2*i + 2), Tools.white, 1);				
+//			}
+//			pZoomLevel.x = pZoomLevel.x * 1.10;
+//		}
 
 	}
 
@@ -664,24 +663,28 @@ public class GUIHandler {
 		Point temp;
 		switch (gestureInTurn) {
 		case GestureTrainingHandler.sStatePointSelect:
+			drawPatientsToSelect();
 			temp = gestureIconsRoi[0].br().clone();
 			temp.x = temp.x*1.15;
 			temp.y = temp.y*0.85;
 			Core.circle(mRgb, temp, 5, Tools.white, -1);
 			break;
 		case GestureTrainingHandler.sStateSwipe:
+			drawPatientInfo();
 			temp = gestureIconsRoi[1].br().clone();
 			temp.x = temp.x*1.15;
 			temp.y = temp.y*0.85;
 			Core.circle(mRgb, temp, 5, Tools.white, -1);
 			break;
 		case GestureTrainingHandler.sStateZoom:
+			drawFullScreenImage();
 			temp = gestureIconsRoi[2].br().clone();
 			temp.x = temp.x*1.15;
 			temp.y = temp.y*0.85;
 			Core.circle(mRgb, temp, 5, Tools.white, -1);
 			break;
 		case GestureTrainingHandler.sStateRotate:
+			drawFullScreenImage();
 			temp = gestureIconsRoi[3].br().clone();
 			temp.x = temp.x*1.15;
 			temp.y = temp.y*0.85;
@@ -742,13 +745,11 @@ public class GUIHandler {
 		//				}else{
 		//					Core.addWeighted(mRgb.submat(gestureIconsRoi[0]), 0.0, mPointSelectIconSelected, 1.0, 0, mRgb.submat(gestureIconsRoi[0]));
 		//				}
-		//				drawPatientInfo();
 		//			}else 
 		//				/********************IMAGE INTERACTION***********************/
 		//				if(currentOverallState == GestureTrainingHandler.sImageInteractionState){
 		//SWIPE ICON IN GRAY
 		//					Core.rectangle(mRgb,gestureIconsRoi[1].tl(), gestureIconsRoi[1].br(), Tools.lightGray, -1);
-		//					drawFullScreenImage();
 
 		//POINTSELECT ICON
 		//					Core.rectangle(mRgb, gestureIconsCoords[0], new Point(Math.ceil((double)(screenHeight*0.14)), gestureIconsCoords[1].y ), Tools.cyan, -1);
@@ -771,9 +772,12 @@ public class GUIHandler {
 		}else{
 			Core.addWeighted(mRgb.submat(gestureIconsRoi[3]), 0.0, mRotateIconSelected, 1.0, 0, mRgb.submat(gestureIconsRoi[3]));
 		}
-		//				}
-
-		int fill = 5;
+		
+		if(second >= 1.0){
+			Imgproc.drawContours(mRgb, lHandContour, -1, Tools.red, -1);
+		}
+		
+		int fill = 4;
 		switch (gesture) {
 		case GestureTrainingHandler.sStateZero:
 			currentHover = hoverNone;
@@ -834,10 +838,6 @@ public class GUIHandler {
 			break;
 		}
 
-		if(second >= 1.0){
-			Imgproc.drawContours(mRgb, lHandContour, -1, Tools.red, -1);
-		}
-
 		if(drawAid){
 			drawAid(gesture);
 		}
@@ -879,18 +879,19 @@ public class GUIHandler {
 		//		 */
 		////		if(GestureTrainingHandler.currentOverallState == GestureTrainingHandler.sPatientSelectionState){//PatSelection
 		//			Rect rect_one = new Rect(patientOneCoords[0], patientOneCoords[1]);
-		//			Rect rect_two = new Rect(patientTwoCoords[0], patientTwoCoords[1]);
+					Rect rect_two = new Rect(patientTwoCoords[0], patientTwoCoords[1]);
 		//			if(click.inside(rect_one)){
 		//				iCurrentPatient = 0;
 		//				sCurrentPatient = "Tom";
 		//				currentHover = hoverNone;
 		//				return true;
-		//			}else if(click.inside(rect_two)){
-		//				iCurrentPatient = 1;
-		//				sCurrentPatient = "Paul";
-		//				currentHover = hoverNone;
-		//				return true;
-		//			}
+		//			}else 
+					if(click.inside(rect_two)){
+//						iCurrentPatient = 1;
+//						sCurrentPatient = "Paul";
+						currentHover = hoverNone;
+						return true;
+					}
 		////		}else if(GestureTrainingHandler.currentOverallState == GestureTrainingHandler.sRecordViewingState){//RecordViewing
 		//			/*
 		//			 * - if iCurrentPatient != -1 --> we are in RecordViewing
@@ -991,14 +992,15 @@ public class GUIHandler {
 //		 */
 		////		if(GestureTrainingHandler.currentOverallState == GestureTrainingHandler.sPatientSelectionState){//PatSelection
 		//			Rect rect_one = new Rect(patientOneCoords[0], patientOneCoords[1]);
-		//			Rect rect_two = new Rect(patientTwoCoords[0], patientTwoCoords[1]);
+					Rect rect_two = new Rect(patientTwoCoords[0], patientTwoCoords[1]);
 		//			if(click.inside(rect_one)){
 		//				currentHover = hoverPatient1;
 		//				return;
-		//			}else if(click.inside(rect_two)){
-		//				currentHover = hoverPatient2;
-		//				return;
-		//			}
+		//			}else 
+					if(click.inside(rect_two)){
+						currentHover = hoverPatient2;
+						return;
+					}
 		////		}else if(GestureTrainingHandler.currentOverallState == GestureTrainingHandler.sRecordViewingState){//RecordViewing
 		//			/*
 		//			 * - if iCurrentPatient != -1 --> we are in RecordViewing
