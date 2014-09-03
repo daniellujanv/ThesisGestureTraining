@@ -361,7 +361,7 @@ public class GestureTrainingHandler {
 			//Init not detected no interaction has not started
 			if(Gestures.detectInitGesture(lDefects, centroid) == true ){
 				currentState = sStateInit;
-				Log.i("ImageInteraction", "Gesture detected - INIT");
+				//Log.i("ImageInteraction", "Gesture detected - INIT");
 				timeLastDetectedGesture = System.currentTimeMillis() - 1000;
 				return;
 			}
@@ -405,7 +405,7 @@ public class GestureTrainingHandler {
 				if( detectedPoint != null ){
 					rotateInitPos = detectedPoint;
 					currentState = sStateRotate;
-					Log.i("ImageInteraction", "Gesture detected - Rotate_Init");
+					//Log.i("ImageInteraction", "Gesture detected - Rotate_Init");
 					timeLastDetectedGesture = System.currentTimeMillis() - 1000;
 					return;
 				}
@@ -425,14 +425,14 @@ public class GestureTrainingHandler {
 				if(traveledDistance > screenWidth*0.10){//more than 10% of the screen
 					if((rotateInitPos.x >= rotateEndPos.x)){
 						//rotate left
-						Log.i("ImageInteraction", "Rotate gesture::LEFT ");
+						//Log.i("ImageInteraction", "Rotate gesture::LEFT ");
 						if(guiHandler.rotate("left")){
 							currentState = sStateInit;
 							timeLastDetectedGesture = System.currentTimeMillis();
 						}
 					}else if((rotateInitPos.x < rotateEndPos.x) ){
 						//rotate right
-						Log.i("ImageInteraction", "Rotate gesture::RIGHT");
+						//Log.i("ImageInteraction", "Rotate gesture::RIGHT");
 						if(guiHandler.rotate("right")){
 							currentState = sStateInit;
 							timeLastDetectedGesture = System.currentTimeMillis();
@@ -452,7 +452,7 @@ public class GestureTrainingHandler {
 					if(zoomEndDistance > zoomInitDistance){
 						//Zoom-IN gesture
 						if(guiHandler.zoom("in")){
-							Log.i("ImageInteraction", "Zoom gesture::IN");
+							//Log.i("ImageInteraction", "Zoom gesture::IN");
 							currentState = sStateInit;
 							timeLastDetectedGesture = System.currentTimeMillis();
 						}
@@ -461,7 +461,7 @@ public class GestureTrainingHandler {
 						if(guiHandler.zoom("out")){
 							currentState = sStateInit;
 							timeLastDetectedGesture = System.currentTimeMillis();
-							Log.i("ImageInteraction", "Zoom gesture::OUT");
+							//Log.i("ImageInteraction", "Zoom gesture::OUT");
 						}
 					}
 					determineNextGesture();
@@ -497,7 +497,7 @@ public class GestureTrainingHandler {
 			
 			if( detectedPoint != null ){
 				double traveledDistance = Tools.getDistanceBetweenPoints(initSwipeLocation, detectedPoint);
-				Log.i("RecordViewing", "traveled::"+traveledDistance);
+				//Log.i("RecordViewing", "traveled::"+traveledDistance);
 				if(traveledDistance > screenWidth*0.20){//more than 20% of the screen
 					if(initSwipeLocation.x < detectedPoint.x){
 						if(guiHandler.swipe("right") == true){

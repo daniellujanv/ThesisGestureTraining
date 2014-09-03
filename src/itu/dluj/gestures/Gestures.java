@@ -12,7 +12,7 @@ import android.util.Log;
 public class Gestures {
 
 	public static int secondsToWait = 2;
-	private static String TAG = "Gestures::";
+	private static String TAG = "itu.dluj.thesisgesturetraining";
 	private final static double iScaleFactor = 2.0;
 
 	/************************************* Available Gestures *****************************************************/
@@ -51,8 +51,8 @@ public class Gestures {
 				double distancefarthestPoint = Tools.getDistanceBetweenPoints(start, farthest);
 				//relation of distances from 1) center of hand to defect and 2)start of defect to farthest point 
 				double relationCenterPoint_farthestPoint = (distanceCenterPoint/distancefarthestPoint);
-				Log.i(TAG+"Init", "relCenter_farthest: "+relationCenterPoint_farthestPoint
-						);
+//				Log.i(TAG+"Init", "relCenter_farthest: "+relationCenterPoint_farthestPoint
+//						);
 				if((relationCenterPoint_farthestPoint <= 2.0)){
 					//				        points
 					//					Core.circle(mRgb, end, 5, red, -1);
@@ -108,8 +108,8 @@ public class Gestures {
 				double distancefarthestPoint = Tools.getDistanceBetweenPoints(start, farthest);
 				//relation of distances from 1) center of hand to defect and 2)start of defect to farthest point 
 				double relationCenterPoint_farthestPoint = (distanceCenterPoint/distancefarthestPoint);
-				Log.i(TAG+"End", "relCenter_farthest: "+relationCenterPoint_farthestPoint
-						);
+//				Log.i(TAG+"End", "relCenter_farthest: "+relationCenterPoint_farthestPoint
+//						);
 				if((relationCenterPoint_farthestPoint >= 3.0)){
 					//				        points
 					//					Core.circle(mRgb, end, 5, red, -1);
@@ -156,7 +156,7 @@ public class Gestures {
 
 		/**************** PRE-STROKE********************/
 		if(!initDetected && lDefects.size() == 1){
-			Log.i(TAG+"PointSelectInit", "looking for pre-stroke");
+			//Log.i(TAG+"PointSelectInit", "looking for pre-stroke");
 			for(int i=0; i< lDefects.size(); i++){
 				start = lDefects.get(i)[0];
 				//			end = contour.get(defects[i+1]);
@@ -168,7 +168,7 @@ public class Gestures {
 				double distancefarthestPoint = Tools.getDistanceBetweenPoints(start, farthest);
 				//relation of distances from 1) center of hand to defect and 2)start of defect to farthest point 
 				double relationCenterPoint_farthestPoint = distanceCenterPoint/distancefarthestPoint;
-				Log.i(TAG+"PointSelectInit", "center_endFurtherst:: "+relationCenterPoint_farthestPoint);
+				//Log.i(TAG+"PointSelectInit", "center_endFurtherst:: "+relationCenterPoint_farthestPoint);
 				if(relationCenterPoint_farthestPoint < 2.0){
 					finalDefects.add(start);
 					positiveDefects = positiveDefects + 1;
@@ -177,13 +177,13 @@ public class Gestures {
 			//relation between length of positive defect and average length of negative defects
 			if(finalDefects.size() == 1){
 				Point defect_one = finalDefects.get(0);
-				Log.i(TAG, "Gesture :: PointSelectInit Detected");
+				//Log.i(TAG, "Gesture :: PointSelectInit Detected");
 				return defect_one;				
 			}
 		}else
 			/**************** POST-STROKE *******************/
 			if(initDetected && lDefects.size() == 2){
-				Log.i(TAG+"PointSelectEnd", "looking for post-stroke");
+				//Log.i(TAG+"PointSelectEnd", "looking for post-stroke");
 				for(int i=0; i< lDefects.size(); i++){
 					start = lDefects.get(i)[0];
 					//			end = contour.get(defects[i+1]);
@@ -195,7 +195,7 @@ public class Gestures {
 					double distancefarthestPoint = Tools.getDistanceBetweenPoints(start, farthest);
 					//relation of distances from 1) center of hand to defect and 2)start of defect to farthest point 
 					double relationCenterPoint_farthestPoint = distanceCenterPoint/distancefarthestPoint;
-					Log.i(TAG+"PointSelectEnd", "center_endFurtherst:: "+relationCenterPoint_farthestPoint);
+					//Log.i(TAG+"PointSelectEnd", "center_endFurtherst:: "+relationCenterPoint_farthestPoint);
 					if(relationCenterPoint_farthestPoint < 2.0){
 						finalDefects.add(start);
 						positiveDefects = positiveDefects + 1;
@@ -203,7 +203,7 @@ public class Gestures {
 				}
 				if(finalDefects.size() == 2){
 					Point defect_one = finalDefects.get(0);
-					Log.i(TAG+"PointSelectEnd", "PointSelectEnd Detected");
+					Log.i(TAG+"PointSelect", "PointSelect Detected");
 					return defect_one;				
 				}				
 			}	
@@ -249,7 +249,7 @@ public class Gestures {
 				double distanceEndfarthest = Tools.getDistanceBetweenPoints(start, farthest);
 				//relation of distances from 1) center of hand to defect and 2)start of defect to farthest point 
 				double relationCenter_EndFurtherst = distanceCenterPoint/distanceEndfarthest;
-				Log.i(TAG+"Swipe", "center_endFurtherst:: "+relationCenter_EndFurtherst);
+				//Log.i(TAG+"Swipe", "center_endFurtherst:: "+relationCenter_EndFurtherst);
 				if(relationCenter_EndFurtherst < 2.0){
 					finalDefects.add(start);
 					positiveDefects = positiveDefects + 1;
@@ -265,15 +265,15 @@ public class Gestures {
 				// _2/_1 because defects are obtained clockwise. finger to the right is pointing finger and
 				//should be smaller giving the correct result... otherwise _1/_2 > 1.0
 				double relDistanceCenterPoint = distanceCenterPoint_2 / distanceCenterPoint_1;
-				Log.i(TAG+"Swipe", "relationDistCenter::"+ relDistanceCenterPoint
-						+ " point1::"+distanceCenterPoint_1
-						+ " point2::"+distanceCenterPoint_2
-						);
+//				Log.i(TAG+"Swipe", "relationDistCenter::"+ relDistanceCenterPoint
+//						+ " point1::"+distanceCenterPoint_1
+//						+ " point2::"+distanceCenterPoint_2
+//						);
 				if(relDistanceCenterPoint < 1.0){
 					if(!initDetected){
-						Log.i(TAG, "Gesture :: SwipeInit Detected");
+						//Log.i(TAG, "Gesture :: SwipeInit Detected");
 					}else{
-						Log.i(TAG, "Gesture :: SwipeEnd Detected");
+						Log.i(TAG, "Gesture :: Swipe Detected");
 					}
 					return defect_one;
 				}
@@ -318,9 +318,9 @@ public class Gestures {
 				double relationCenterPoint_farthestPoint = distanceCenterPoint/distancefarthestPoint; 
 				//top left screen x=0,y=0. Otherwise would be end.x > centroid.x
 				//			if( (start.y < centroid.y && farthest.y < centroid.y) && (start.y < farthest.y)){
-				Log.i(TAG+"Rotate",
-						"relCenterPoint_farthestPoint: " + relationCenterPoint_farthestPoint
-						);
+//				Log.i(TAG+"Rotate",
+//						"relCenterPoint_farthestPoint: " + relationCenterPoint_farthestPoint
+//						);
 				if(relationCenterPoint_farthestPoint < 2.0){
 					finalDefects.add(start);
 					positiveDefects = positiveDefects + 1;
@@ -351,12 +351,12 @@ public class Gestures {
 					if(!initDetected){
 						Point detectedPoint = Tools.getPointBetweenPoints(defect_one, defect_two);
 						//					Core.circle(mRgb, rotateInitPos, 5, Tools.magenta, -1);
-						Log.i(TAG, "Gesture :: RotateInit Detected");
+						//Log.i(TAG, "Gesture :: RotateInit Detected");
 
 						return detectedPoint;
 					}else{
 						Point detectedPoint = Tools.getPointBetweenPoints(defect_one, defect_two);
-						Log.i(TAG, "Gesture :: RotateEnd Detected");
+						Log.i(TAG, "Gesture :: Rotate Detected");
 
 						//					Log.i("null-check", "init::"+ rotateInitPos.toString());
 						//					Log.i("null-check", " end::"+rotateEndPos.toString());
@@ -404,11 +404,11 @@ public class Gestures {
 				double distancefarthestPoint = Tools.getDistanceBetweenPoints(start, farthest);
 				//relation of distances from 1) center of hand to defect and 2)start of defect to farthest point 
 				double relationCenterPoint_farthestPoint = distanceCenterHull/distancefarthestPoint; 
-				Log.i(TAG+"Swipe",
-						"relcenter_farthest: "+relationCenterPoint_farthestPoint
+//				Log.i(TAG+"Swipe",
+//						"relcenter_farthest: "+relationCenterPoint_farthestPoint
 						//					+ " centerHull" + distanceCenterHull
 						//					+ " farthest" + distancefarthest
-						);			//top left screen x=0,y=0. Otherwise would be end.x > centroid.x
+//						);			//top left screen x=0,y=0. Otherwise would be end.x > centroid.x
 				//			if((start.y < centroid.y && farthest.y < centroid.y) && (start.y < farthest.y)){
 				if((relationCenterPoint_farthestPoint < 2.0)){
 					finalDefects.add(start);
@@ -434,12 +434,12 @@ public class Gestures {
 				if(!initDetected){
 					if((distanceOneTwo < distanceCenterHull_one ) && (distanceOneTwo < distanceCenterHull_two)){
 						double detectedDistance = Tools.getDistanceBetweenPoints(defect_one, defect_two);
-						Log.i(TAG, "Gesture :: ZoomInit Detected");
+						//Log.i(TAG, "Gesture :: ZoomInit Detected");
 						return detectedDistance;
 					}
 				}else{
 					double zoomEndDistance = Tools.getDistanceBetweenPoints(defect_one, defect_two);
-					Log.i(TAG, "Gesture :: ZoomEnd Detected");
+					Log.i(TAG, "Gesture :: Zoom Detected");
 					return zoomEndDistance;
 				}
 			}

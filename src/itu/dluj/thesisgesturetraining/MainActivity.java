@@ -43,6 +43,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
 	private int cameraIndex;
 	private int screenWidth;
 	private int screenHeight;
+	private String TAG = "itu.dluj.thesisgesturetraining";
 
 //	private Mat mProcessed;
 
@@ -51,7 +52,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		Log.i("opencv", "called onCreate");
+		Log.i(TAG, "MainActivity :: called onCreate");
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		setContentView(R.layout.activity_main);
 
@@ -95,40 +96,40 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
 	 @Override
 	 public void onPause()
 	 {
-		 Log.i("pause", "app paused");
+		 Log.i(TAG, "MainActivity :: app paused");
 		 super.onPause();
 	     if (mOpenCvCameraView != null)
 	         mOpenCvCameraView.disableView();
 	 }
 
 	 public void onDestroy() {
-		 Log.i("storagedirectory", Environment.DIRECTORY_DOWNLOADS.toString());
+		 Log.i(TAG, "MainActivity :: "+Environment.DIRECTORY_DOWNLOADS.toString());
 		 String state = Environment.getExternalStorageState();
 		    if (Environment.MEDIA_MOUNTED.equals(state)) {
-		    	Log.i("MainActivity", "Mdia mounted");
+		    	Log.i(TAG, "MainActivity :: Mdia mounted");
 				 File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
 				 if(!path.mkdirs()){
-					 Log.i("MainActivity", "Error mkdirs");
+					 Log.i(TAG, "MainActivity :: Error mkdirs");
 				 }
 				 //				 File path = this.getExternalFilesDir(null);
 				 String fileName = "logcatParticipant6.txt";
 				 File file = new File(path, fileName);
 			     try {
 			    	 OutputStream os = new FileOutputStream(file);
-			    	 Log.i("bla", "writting");
+			    	 Log.i(TAG, "MainActivity :: writting");
 			    	 os.write(("testng").getBytes());
 			    	 os.close();
-			    	 Log.i("bla", "closing");
-			    	 Runtime.getRuntime().exec(new String[]{"logcat", "-f", file.getPath(), "itu.dluj.tesisprototype_iteration2:I"});
-			    	 Log.i("bla", "logcat done :: "+ path.toString());
+			    	 Log.i(TAG, "MainActivity :: closing");
+			    	 Runtime.getRuntime().exec("logcat -v threadtime -d -f " + file.getPath() +" *:S itu.dluj.thesisgesturetraining");
+			    	 Log.i(TAG, "MainActivity :: logcat done :: "+ path.toString());
 			    	 Intent mediaScanIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
 			    	    mediaScanIntent.setData(Uri.fromFile(file));
 			    	    this.sendBroadcast(mediaScanIntent);
 				} catch (IOException e) {
-					 Log.i("storagedirectory", e.toString());
+					 Log.i(TAG, "MainActivity :: "+e.toString());
 				}
 		    }else{
-		    	Log.i("MainActivity", "Media NOT mounted");
+		    	Log.i(TAG, "MainActivity :: Media NOT mounted");
 		    }
 
 		 
@@ -144,7 +145,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
 			switch (status) {
 			case LoaderCallbackInterface.SUCCESS:
 			{
-				Log.i("opencv", "OpenCV loaded successfully");
+				Log.i(TAG, "MainActivity :: OpenCV loaded successfully");
 				mOpenCvCameraView.enableView();
 
 			} break;
@@ -166,7 +167,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
 	@Override
 	public void onCameraViewStarted(int width, int height) {				
 //		mOpenCvCameraView.setFpsRange(30000, 30000);
-		Log.i("MainActivity", "size:: w:"+ width+" h:"+height);
+		Log.i(TAG, "MainActivity :: size:: w:"+ width+" h:"+height);
 		if(width == 0){
 			width = 720;
 		}
@@ -181,7 +182,7 @@ public class MainActivity extends Activity implements CvCameraViewListener2 {
 
 	@Override
 	public void onCameraViewStopped() {
-		 Log.i("stop", "camera view stopped");
+		 Log.i(TAG, "MainActivity :: camera view stopped");
 	}
 
 	@Override

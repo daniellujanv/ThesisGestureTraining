@@ -622,13 +622,13 @@ public class GUIHandler {
 
 			}
 
-			Log.i("GUIHandler","rec::"+mRgb.submat(fullScreenImgRoi).size().toString()+" toDraw::"+toDraw[zoomLevel].size().toString()
-					+ " imgRoi::"+fullScreenImgRoi.toString());
+//			Log.i("GUIHandler","rec::"+mRgb.submat(fullScreenImgRoi).size().toString()+" toDraw::"+toDraw[zoomLevel].size().toString()
+//					+ " imgRoi::"+fullScreenImgRoi.toString());
 			Core.addWeighted(mRgb.submat(fullScreenImgRoi), 0.0, 
 					toDraw[zoomLevel], 1.0, 0, mRgb.submat(fullScreenImgRoi));
 		}else {
-			Log.i("GUIHandler","rec::"+mRgb.submat(fullScreenImgRoi).size().toString()+" toDraw::"+mFullScreenImages[iCurrentImg].size().toString()
-					+ " imgRoi::"+fullScreenImgRoi.toString());
+//			Log.i("GUIHandler","rec::"+mRgb.submat(fullScreenImgRoi).size().toString()+" toDraw::"+mFullScreenImages[iCurrentImg].size().toString()
+//					+ " imgRoi::"+fullScreenImgRoi.toString());
 			Core.addWeighted(mRgb.submat(fullScreenImgRoi), 0.0, 
 					mFullScreenImages[iCurrentImg], 1.0, 0, mRgb.submat(fullScreenImgRoi));
 		}
