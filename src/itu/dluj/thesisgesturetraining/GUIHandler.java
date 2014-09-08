@@ -466,19 +466,19 @@ public class GUIHandler {
 	 */
 	public void drawPatientsToSelect(){
 		//		Mat rec = Mat.zeros(size, type);
-		
+
 		/************** Patient One ************************/
-//		if(currentHover == hoverPatient1){
-//			Core.rectangle(mRgb, patientOneCoords[2], patientOneCoords[3], Tools.green, -1);
-//		}else{
-//			Core.rectangle(mRgb, patientOneCoords[2], patientOneCoords[3], Tools.blue, -1);
-//		}
-//		Core.rectangle(mRgb, patientOneCoords[0], patientOneCoords[1], Tools.lightGray, 1);
-//		mRgb = writeToImage(mRgb, patientOneCoords[4], "Patient: Tom", 0.7);
-//		Log.i("GUIHandler", " profPicRoi::"+profilePicRoi[0].size().toString()
-//				+ " profPicSize::"+ mProfilePics[0].size().toString()
-//				);
-//		Core.addWeighted(mRgb.submat(profilePicRoi[0]), 0.0, mProfilePics[0], 1.0, 0, mRgb.submat(profilePicRoi[0]));
+		//		if(currentHover == hoverPatient1){
+		//			Core.rectangle(mRgb, patientOneCoords[2], patientOneCoords[3], Tools.green, -1);
+		//		}else{
+		//			Core.rectangle(mRgb, patientOneCoords[2], patientOneCoords[3], Tools.blue, -1);
+		//		}
+		//		Core.rectangle(mRgb, patientOneCoords[0], patientOneCoords[1], Tools.lightGray, 1);
+		//		mRgb = writeToImage(mRgb, patientOneCoords[4], "Patient: Tom", 0.7);
+		//		Log.i("GUIHandler", " profPicRoi::"+profilePicRoi[0].size().toString()
+		//				+ " profPicSize::"+ mProfilePics[0].size().toString()
+		//				);
+		//		Core.addWeighted(mRgb.submat(profilePicRoi[0]), 0.0, mProfilePics[0], 1.0, 0, mRgb.submat(profilePicRoi[0]));
 
 		/************************* Patient Two ***********************/
 		if(currentHover == hoverPatient2){
@@ -488,9 +488,9 @@ public class GUIHandler {
 		}
 		Core.rectangle(mRgb, patientTwoCoords[0], patientTwoCoords[1], Tools.lightGray, 1);
 		mRgb = writeToImage(mRgb, patientTwoCoords[4], "Patient: Paul", 0.7);
-//		Log.i("GUIHandler", " profPicRoi2::"+profilePicRoi[1].size().toString()
-//				+ " profPicSize::"+ mProfilePics[1].size().toString()
-//				);
+		//		Log.i("GUIHandler", " profPicRoi2::"+profilePicRoi[1].size().toString()
+		//				+ " profPicSize::"+ mProfilePics[1].size().toString()
+		//				);
 		Core.addWeighted(mRgb.submat(profilePicRoi[1]), 0.0, mProfilePics[1], 1.0, 0, mRgb.submat(profilePicRoi[1]));
 	}
 
@@ -500,21 +500,21 @@ public class GUIHandler {
 	 */
 	public void drawPatientInfo(){
 		//		Mat rec = Mat.zeros(size, type);
-//		drawImagesButton();
-//		drawBackButton(false);
-//		if(!imagesBtnClicked){
-//			Core.rectangle(mRgb, patientInfoCoords[0], patientInfoCoords[1], Tools.lightGray, -1);
-//			mRgb = writeToImage(mRgb, patientInfoCoords[2], sCurrentPatient +"'s Info");
-//
-//			Point temp = patientInfoCoords[2].clone();
-//			for(int i = 0; i<patientInfoText.length; i++){
-//				temp.y = temp.y + screenHeight*0.09;
-//				//			Log.i("GUIHandler","Point "+i+"::"+temp.toString());
-//				mRgb = writeToImage(mRgb, temp, patientInfoText[i], 0.55);
-//			}
-//		}else{
+		//		drawImagesButton();
+		//		drawBackButton(false);
+		//		if(!imagesBtnClicked){
+		//			Core.rectangle(mRgb, patientInfoCoords[0], patientInfoCoords[1], Tools.lightGray, -1);
+		//			mRgb = writeToImage(mRgb, patientInfoCoords[2], sCurrentPatient +"'s Info");
+		//
+		//			Point temp = patientInfoCoords[2].clone();
+		//			for(int i = 0; i<patientInfoText.length; i++){
+		//				temp.y = temp.y + screenHeight*0.09;
+		//				//			Log.i("GUIHandler","Point "+i+"::"+temp.toString());
+		//				mRgb = writeToImage(mRgb, temp, patientInfoText[i], 0.55);
+		//			}
+		//		}else{
 		drawPatientImages();
-//		}
+		//		}
 	}
 
 	/*
@@ -563,7 +563,7 @@ public class GUIHandler {
 	public void drawFullScreenImage(){
 		//		Mat rec = Mat.zeros(size, type);
 		//Doc One
-//		drawBackButton(true);
+		//		drawBackButton(true);
 		//patInfoCoords[5] upper left point for image
 		//patInfoCoords[1] lower righ point for image (same as both squares)
 
@@ -622,13 +622,13 @@ public class GUIHandler {
 
 			}
 
-//			Log.i("GUIHandler","rec::"+mRgb.submat(fullScreenImgRoi).size().toString()+" toDraw::"+toDraw[zoomLevel].size().toString()
-//					+ " imgRoi::"+fullScreenImgRoi.toString());
+			//			Log.i("GUIHandler","rec::"+mRgb.submat(fullScreenImgRoi).size().toString()+" toDraw::"+toDraw[zoomLevel].size().toString()
+			//					+ " imgRoi::"+fullScreenImgRoi.toString());
 			Core.addWeighted(mRgb.submat(fullScreenImgRoi), 0.0, 
 					toDraw[zoomLevel], 1.0, 0, mRgb.submat(fullScreenImgRoi));
 		}else {
-//			Log.i("GUIHandler","rec::"+mRgb.submat(fullScreenImgRoi).size().toString()+" toDraw::"+mFullScreenImages[iCurrentImg].size().toString()
-//					+ " imgRoi::"+fullScreenImgRoi.toString());
+			//			Log.i("GUIHandler","rec::"+mRgb.submat(fullScreenImgRoi).size().toString()+" toDraw::"+mFullScreenImages[iCurrentImg].size().toString()
+			//					+ " imgRoi::"+fullScreenImgRoi.toString());
 			Core.addWeighted(mRgb.submat(fullScreenImgRoi), 0.0, 
 					mFullScreenImages[iCurrentImg], 1.0, 0, mRgb.submat(fullScreenImgRoi));
 		}
@@ -639,17 +639,17 @@ public class GUIHandler {
 		}
 		Core.rectangle(mRgb, fullScreenImgCoords[0], fullScreenImgCoords[1], Tools.lightGray, 2);
 
-//		Point pZoomLevel = new Point();
-//		pZoomLevel.x = fullScreenImgCoords[0].x*1.05;
-//		pZoomLevel.y = screenHeight*0.05;
-//		for(int i = 0; i<= maxZoom; i++){
-//			if(i == zoomLevel){
-//				Core.circle(mRgb, pZoomLevel, (2*i + 2), Tools.white, -1);
-//			}else{
-//				Core.circle(mRgb, pZoomLevel, (2*i + 2), Tools.white, 1);				
-//			}
-//			pZoomLevel.x = pZoomLevel.x * 1.10;
-//		}
+		//		Point pZoomLevel = new Point();
+		//		pZoomLevel.x = fullScreenImgCoords[0].x*1.05;
+		//		pZoomLevel.y = screenHeight*0.05;
+		//		for(int i = 0; i<= maxZoom; i++){
+		//			if(i == zoomLevel){
+		//				Core.circle(mRgb, pZoomLevel, (2*i + 2), Tools.white, -1);
+		//			}else{
+		//				Core.circle(mRgb, pZoomLevel, (2*i + 2), Tools.white, 1);				
+		//			}
+		//			pZoomLevel.x = pZoomLevel.x * 1.10;
+		//		}
 
 	}
 
@@ -693,8 +693,8 @@ public class GUIHandler {
 		default:
 			break;
 		}
-	
-		
+
+
 		/*****************PATIENT SELECTION*********************/
 		//		if(currentOverallState == GestureTrainingHandler.sPatientSelectionState){
 		/****************ZERO STATE -- ONLY DRAW INIT GESTURE**************************/
@@ -772,72 +772,72 @@ public class GUIHandler {
 		}else{
 			Core.addWeighted(mRgb.submat(gestureIconsRoi[3]), 0.0, mRotateIconSelected, 1.0, 0, mRgb.submat(gestureIconsRoi[3]));
 		}
-		
+
 		if(second >= 1.0){
 			Imgproc.drawContours(mRgb, lHandContour, -1, Tools.red, -1);
-		}
-		
-		int fill = 4;
-		switch (gesture) {
-		case GestureTrainingHandler.sStateZero:
-			currentHover = hoverNone;
-			if(goodContour){
-				Imgproc.drawContours(mRgb, lHandContour, -1, Tools.gray, 2);
-			}else{
-				Imgproc.drawContours(mRgb, lHandContour, -1, Tools.lightGray, -1);
-			}
-			break;
-		case GestureTrainingHandler.sStateEnd:
-			currentHover = hoverNone;
-			if(goodContour){
-				Imgproc.drawContours(mRgb, lHandContour, -1, Tools.lightGreen, fill);
-			}else{
-				Imgproc.drawContours(mRgb, lHandContour, -1, Tools.lightGray, -1);
-			}
-			break;
-		case GestureTrainingHandler.sStateInit:
-			currentHover = hoverNone;
-			if(goodContour){
-				Imgproc.drawContours(mRgb, lHandContour, -1, Tools.green, 2);
-			}else{
-				Imgproc.drawContours(mRgb, lHandContour, -1, Tools.lightGray, -1);
-			}
-			break;
-		case GestureTrainingHandler.sStatePointSelect:
-			if(goodContour){
-				Imgproc.drawContours(mRgb, lHandContour, -1, Tools.cyan, fill);
-			}else{
-				Imgproc.drawContours(mRgb, lHandContour, -1, Tools.lightGray, -1);
-			}
-			break;
-		case GestureTrainingHandler.sStateRotate:
-			currentHover = hoverNone;
-			if(goodContour){
-				Imgproc.drawContours(mRgb, lHandContour, -1, Tools.magenta, fill);
-			}else{
-				Imgproc.drawContours(mRgb, lHandContour, -1, Tools.lightGray, -1);
-			}
-			break;
-		case GestureTrainingHandler.sStateSwipe:
-			currentHover = hoverNone;
-			if(goodContour){
-				Imgproc.drawContours(mRgb, lHandContour, -1, Tools.white,fill);
-			}else{
-				Imgproc.drawContours(mRgb, lHandContour, -1, Tools.lightGray, -1);
-			}
-			break;
-		case GestureTrainingHandler.sStateZoom:
-			currentHover = hoverNone;
-			if(goodContour){
-				Imgproc.drawContours(mRgb, lHandContour, -1, Tools.orange, fill);
-			}else{
-				Imgproc.drawContours(mRgb, lHandContour, -1, Tools.lightGray, -1);
-			}
-			break;
-		default:
-			break;
-		}
+		}else{
 
+			int fill = 4;
+			switch (gesture) {
+			case GestureTrainingHandler.sStateZero:
+				currentHover = hoverNone;
+				if(goodContour){
+					Imgproc.drawContours(mRgb, lHandContour, -1, Tools.gray, 2);
+				}else{
+					Imgproc.drawContours(mRgb, lHandContour, -1, Tools.lightGray, -1);
+				}
+				break;
+			case GestureTrainingHandler.sStateEnd:
+				currentHover = hoverNone;
+				if(goodContour){
+					Imgproc.drawContours(mRgb, lHandContour, -1, Tools.lightGreen, fill);
+				}else{
+					Imgproc.drawContours(mRgb, lHandContour, -1, Tools.lightGray, -1);
+				}
+				break;
+			case GestureTrainingHandler.sStateInit:
+				currentHover = hoverNone;
+				if(goodContour){
+					Imgproc.drawContours(mRgb, lHandContour, -1, Tools.green, 2);
+				}else{
+					Imgproc.drawContours(mRgb, lHandContour, -1, Tools.lightGray, -1);
+				}
+				break;
+			case GestureTrainingHandler.sStatePointSelect:
+				if(goodContour){
+					Imgproc.drawContours(mRgb, lHandContour, -1, Tools.cyan, fill);
+				}else{
+					Imgproc.drawContours(mRgb, lHandContour, -1, Tools.lightGray, -1);
+				}
+				break;
+			case GestureTrainingHandler.sStateRotate:
+				currentHover = hoverNone;
+				if(goodContour){
+					Imgproc.drawContours(mRgb, lHandContour, -1, Tools.magenta, fill);
+				}else{
+					Imgproc.drawContours(mRgb, lHandContour, -1, Tools.lightGray, -1);
+				}
+				break;
+			case GestureTrainingHandler.sStateSwipe:
+				currentHover = hoverNone;
+				if(goodContour){
+					Imgproc.drawContours(mRgb, lHandContour, -1, Tools.white,fill);
+				}else{
+					Imgproc.drawContours(mRgb, lHandContour, -1, Tools.lightGray, -1);
+				}
+				break;
+			case GestureTrainingHandler.sStateZoom:
+				currentHover = hoverNone;
+				if(goodContour){
+					Imgproc.drawContours(mRgb, lHandContour, -1, Tools.orange, fill);
+				}else{
+					Imgproc.drawContours(mRgb, lHandContour, -1, Tools.lightGray, -1);
+				}
+				break;
+			default:
+				break;
+			}
+		}
 		if(drawAid){
 			drawAid(gesture);
 		}
@@ -879,19 +879,19 @@ public class GUIHandler {
 		//		 */
 		////		if(GestureTrainingHandler.currentOverallState == GestureTrainingHandler.sPatientSelectionState){//PatSelection
 		//			Rect rect_one = new Rect(patientOneCoords[0], patientOneCoords[1]);
-					Rect rect_two = new Rect(patientTwoCoords[0], patientTwoCoords[1]);
+		Rect rect_two = new Rect(patientTwoCoords[0], patientTwoCoords[1]);
 		//			if(click.inside(rect_one)){
 		//				iCurrentPatient = 0;
 		//				sCurrentPatient = "Tom";
 		//				currentHover = hoverNone;
 		//				return true;
 		//			}else 
-					if(click.inside(rect_two)){
-//						iCurrentPatient = 1;
-//						sCurrentPatient = "Paul";
-						currentHover = hoverNone;
-						return true;
-					}
+		if(click.inside(rect_two)){
+			//						iCurrentPatient = 1;
+			//						sCurrentPatient = "Paul";
+			currentHover = hoverNone;
+			return true;
+		}
 		////		}else if(GestureTrainingHandler.currentOverallState == GestureTrainingHandler.sRecordViewingState){//RecordViewing
 		//			/*
 		//			 * - if iCurrentPatient != -1 --> we are in RecordViewing
@@ -992,15 +992,15 @@ public class GUIHandler {
 //		 */
 		////		if(GestureTrainingHandler.currentOverallState == GestureTrainingHandler.sPatientSelectionState){//PatSelection
 		//			Rect rect_one = new Rect(patientOneCoords[0], patientOneCoords[1]);
-					Rect rect_two = new Rect(patientTwoCoords[0], patientTwoCoords[1]);
+		Rect rect_two = new Rect(patientTwoCoords[0], patientTwoCoords[1]);
 		//			if(click.inside(rect_one)){
 		//				currentHover = hoverPatient1;
 		//				return;
 		//			}else 
-					if(click.inside(rect_two)){
-						currentHover = hoverPatient2;
-						return;
-					}
+		if(click.inside(rect_two)){
+			currentHover = hoverPatient2;
+			return;
+		}
 		////		}else if(GestureTrainingHandler.currentOverallState == GestureTrainingHandler.sRecordViewingState){//RecordViewing
 		//			/*
 		//			 * - if iCurrentPatient != -1 --> we are in RecordViewing
