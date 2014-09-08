@@ -1,6 +1,5 @@
 package itu.dluj.thesisgesturetraining;
 
-import itu.dluj.gestures.Gestures;
 import itu.dluj.gestures.Tools;
 
 import java.util.List;
@@ -19,7 +18,6 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.util.Log;
 
 public class GUIHandler {
 
@@ -34,6 +32,7 @@ public class GUIHandler {
 	private Point[] patientImgsCoords;
 	private Point[] fullScreenImgCoords;
 
+	private Mat mEndIcon;
 	private Mat mPointSelectIcon;
 	private Mat mPointSelectIconSelected;
 	private Mat mSwipeIcon;
@@ -122,6 +121,7 @@ public class GUIHandler {
 		profilePicRoi = new Rect[2];// 0 == patient0, 1 == patient1
 		mProfilePics = new Mat[2];
 		/***************************ICONS***********************************/
+		mEndIcon = new Mat();
 		mPointSelectIcon = new Mat();
 		mPointSelectIconSelected = new Mat();
 		mSwipeIcon = new Mat();
@@ -133,8 +133,8 @@ public class GUIHandler {
 		mInitIcon = new Mat();
 
 
-		gestureIconsRoi = new Rect[4];
-		gestureIconsCoords = new Point[8];
+		gestureIconsRoi = new Rect[5];
+		gestureIconsCoords = new Point[10];
 		gestureIconsCoords[0] = new Point(0.0, screenHeight*0.24);//color rectangle
 		gestureIconsCoords[1] = new Point(0.0, screenHeight*0.25);// picture
 		gestureIconsCoords[2] = new Point(0.0, screenHeight*0.39);//c
@@ -143,7 +143,9 @@ public class GUIHandler {
 		gestureIconsCoords[5] = new Point(0.0, screenHeight*0.55);//p
 		gestureIconsCoords[6] = new Point(0.0, screenHeight*0.69);//c
 		gestureIconsCoords[7] = new Point(0.0, screenHeight*0.70);//p
-
+		gestureIconsCoords[8] = new Point(0.0, screenHeight*0.09);//c
+		gestureIconsCoords[9] = new Point(0.0, screenHeight*0.10);//p
+		
 		int widthIcon = (int)  Math.ceil((double)(screenHeight*0.14));
 		int heightIcon = widthIcon;
 		//POINT SELECT ICON NORMAL
@@ -199,6 +201,12 @@ public class GUIHandler {
 		Utils.bitmapToMat(bitmap, mRotateIconSelected, true);
 		Imgproc.cvtColor(mRotateIconSelected, mRotateIconSelected, Imgproc.COLOR_RGBA2RGB);
 		icon.recycle();
+		//END
+		gestureIconsRoi[4] = new Rect(gestureIconsCoords[9],new Size(widthIcon, heightIcon));
+		icon = BitmapFactory.decodeResource(resources, R.drawable.icon_gesture_end_normal);
+		bitmap = Bitmap.createScaledBitmap( icon, widthIcon, heightIcon, true);
+		Utils.bitmapToMat(bitmap, mEndIcon, true);
+		Imgproc.cvtColor(mEndIcon, mEndIcon, Imgproc.COLOR_RGBA2RGB);
 
 		//Coords [0] == upper left inner rectangle
 		//Coords [1] == lower right inner rectangle
@@ -709,6 +717,11 @@ public class GUIHandler {
 		//				//ROTATE ICON IN GRAY
 		//				Core.rectangle(mRgb, gestureIconsRoi[3].tl(), gestureIconsRoi[3].br(), Tools.lightGray, -1);
 		//
+
+		//END ICON
+		Core.rectangle(mRgb, gestureIconsCoords[8], new Point( Math.ceil((double)(screenHeight*0.14)), gestureIconsCoords[9].y ), Tools.lightGreen, -1);
+		Core.addWeighted(mRgb.submat(gestureIconsRoi[4]), 0.0, mEndIcon, 1.0, 0, mRgb.submat(gestureIconsRoi[4]));
+		
 		//				//POINTSELECT ICON
 		Core.rectangle(mRgb, gestureIconsCoords[0], new Point( Math.ceil((double)(screenHeight*0.14)), gestureIconsCoords[1].y ), Tools.cyan, -1);
 		if(gesture != GestureTrainingHandler.sStatePointSelect){

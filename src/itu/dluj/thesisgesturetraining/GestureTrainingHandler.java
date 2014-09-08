@@ -157,7 +157,7 @@ public class GestureTrainingHandler {
 			gestureToMake = sStateRotate;
 			break;
 		default:
-			gestureToMake = sStatePointSelect;
+			gestureToMake = sStateRotate;
 			break;
 		}
 	}
